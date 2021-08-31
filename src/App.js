@@ -1,6 +1,6 @@
 import axios from "axios";
-import { REGEX_BACKSLASH } from "picomatch/lib/constants";
 import React, { useEffect, useState } from "react";
+import BookForm from "./BookForm";
 
 const App = () => {
   const [books, setBooks] = useState([]);
@@ -20,6 +20,12 @@ const App = () => {
     console.log(err);
   }
   };
+
+  const addBook = (book) => {
+    let addBooks = [book, ...books];
+    setBooks(addBooks);
+  };
+
 
   const renderBooks = () => {
     if(books.length == 0) {
@@ -48,6 +54,7 @@ const App = () => {
      <u><h1>REACT BOOK LIST</h1></u>
       
       {renderBooks()}
+      <BookForm book={addBook}/>
       </div>
     
   );
