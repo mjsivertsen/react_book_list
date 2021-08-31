@@ -61,7 +61,7 @@ const App = () => {
   }
 
   return (
-    <div> 
+    <div style={styles.page}> 
      <u><h1>REACT BOOK LIST</h1></u>
       
       {renderBooks()}
@@ -73,14 +73,16 @@ const App = () => {
 
 const styles = {
 container: {
+  color: "#243645",
   maxWidth: "800px",
   padding: "22px",
   margin: "22px",
   boxShadow: "rgba(0, 0, 0, .6) 0px 6px 18px",
 },
 page: {
-  background: "black",
+  background: "#98BBCD",
+  color: "#243645"
 }
 }
-
+//#889BAE
 export default App;

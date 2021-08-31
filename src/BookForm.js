@@ -74,9 +74,11 @@ const BookForm = (props) => {
         defaultValue = "http:\/\/placeimg.com\/480\/640\/any"
         onChange={(e) => {
          setBookImage(e.target.value)}}/>
+
+         {/* my image input didn't work but I tried */}
         
         <p> Description </p>
-        <input style={{height:"100px", width:"300px"}} 
+        <input style={{height:"100px", width:"300px", color: "#889BAE"}} 
         value={bookDescription} 
         onChange={(e)=> {
         setBookDescription(e.target.value)}}/>
@@ -121,12 +123,11 @@ export const formStyle = {
     margin: "6px",
     padding: "6px",
     size: "6px",
-    boxShadow: "rgba(0, 0, 0, .9) 2px 3px 6px",
-
-
+    boxShadow: "rgba(0, 0, 0, .9) 2px 3px 6px"
   },
   input: {
-    width: "300px"
+    width: "300px",
+    color: "#889BAE"
   }
 }
 
