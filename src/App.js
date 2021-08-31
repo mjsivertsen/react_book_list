@@ -6,7 +6,7 @@ const App = () => {
   const [books, setBooks] = useState([]);
  
   useEffect(() => {
-    console.log("useEffect called");
+    // console.log("useEffect called");
     getBooks();
   }, []);
   
@@ -26,6 +26,15 @@ const App = () => {
     setBooks(addBooks);
   };
 
+  const deleteBook = (title) => {
+    let addBooks = books.filter(b => b.title !== title);
+    setBooks(addBooks);
+  };
+
+  const changeBook = (book) => {
+    let changedBooks = books.map((b) => (b.isbn == book.isbn ? book: b));
+    setBooks(changedBooks);
+  }
 
   const renderBooks = () => {
     if(books.length == 0) {
@@ -38,11 +47,13 @@ const App = () => {
           <em><h1>{book.title}</h1></em>
           <h2>{`By ${book.author}`}</h2>
           <img style={{height:"200px"}} src={book.image} />
-          <p style={{size:"3px"}}>{book.description}</p>
+          <p>{book.description}</p>
           <h5>{`Genre: ${book.genre}`}</h5>
           <h6> {`Publisher: ${book.publisher}`} </h6>
           <h6> {`Published: ${book.published}`}</h6>
           <h6>{`ISBN: ${book.isbn}`}</h6>
+          <BookForm changeBook={changeBook} book={book}/>
+          <button onClick={() => deleteBook(book.title)}>Remove Book From List</button>
         </div>
       )
     })
@@ -54,7 +65,7 @@ const App = () => {
      <u><h1>REACT BOOK LIST</h1></u>
       
       {renderBooks()}
-      <BookForm book={addBook}/>
+      <BookForm poop={addBook} id="addbook"/>
       </div>
     
   );
@@ -66,8 +77,10 @@ container: {
   padding: "22px",
   margin: "22px",
   boxShadow: "rgba(0, 0, 0, .6) 0px 6px 18px",
+},
+page: {
+  background: "black",
 }
-
 }
 
 export default App;
